@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+    <script type="text/javascript" src="index.js"></script>
+
+
+    <script>
+        var now = 1;
+
+
+        $(document).ready(function () {
+            // console.log(111);
+            set_tab_bgcolor("tab-1");
+            $("#tab-1").click(function () {
+                // console.log(111);
+                now = 1;
+                // items_load(1,1);
+                set_tab_bgcolor("tab-1");
+            });
+            $("#tab-2").click(function () {
+                now = 2;
+                // items_load(1,2);
+                set_tab_bgcolor("tab-2");
+            });
+            $("#tab-3").click(function () {
+                now = 3;
+                // items_load(1,3);
+                set_tab_bgcolor("tab-3");
+            });
+            $("#tab-4").click(function () {
+                now = 4;
+                // items_load(1,4);
+                set_tab_bgcolor("tab-4");
+            });
+            setInterval(function () {
+                // console.log(now);
+                items_load(1,now);
+                update_board();
+            },1000);
+
+            $(".clock-toggle").click(function () {
+                toggle_clock();
+            });
+
+
+            var check_interval;
+            check_interval = setInterval("check_clock()",1000);
+
+            $(".clock").click(function () {
+                clearInterval(animate_interval);
+                // $(".clock-toggle").text("START");
+                $(".clock").animate({
+                    backgroundColor:"#fff"
+                },500);
+                $(".clock-title").animate({
+                    color: "#000"
+                },500);
+                $(".clock-time").animate({
+                    color: "#808080"
+                },500);
+            });
+
+            $("#clock-time-div").click(function () {
+                toggle_clock_type();
+            })
+
+        });
+
+
+
+    </script>
+
+
+    <title>SpringGtdSystem</title>
+</head>
+<body>
+    <!--<input type="button" onclick="show()" value="show screen data">-->
+    <!--<input type="button" onclick="appendListItem_test()" value="Additem test">-->
+
+
+    <div class="container-fluid">
+        <ul class="nav nav-tabs" width="100%">
+
+
+                <li role="presentation" class="active tab-item" id="tab-1">
+                    <!--<a href="#sw-panel" class="tab-title" data-toggle="tab">ShortPeriod Work</a>-->
+                    <img style="margin-top: 7px" src="imgs/text_document_32px.png">
+                </li>
+                <li role="presentation" class="tab-item" id="tab-2">
+                    <!--<a href="#sa-panel" class="tab-title" data-toggle="tab">ShortPeriod Ent</a>-->
+                    <img style="margin-top: 7px" src="imgs/text_document_black_32px.png">
+                </li>
+                <li role="presentation" class="tab-item" id="tab-3">
+                    <!--<a href="#lw-panel" class="tab-title" data-toggle="tab">LongPeriod Work</a>-->
+                    <img style="margin-top: 5px" src="imgs/puzzle_32px.png">
+                </li>
+                <li role="presentation" class="tab-item" id="tab-4">
+                    <!--<a href="#la-panel" class="tab-title" data-toggle="tab">LongPeriod Ent</a>-->
+                    <img style="margin-top: 5px" src="imgs/puzzle_alt_32px.png">
+                </li>
+
+
+
+
+
+        </ul>
+
+
+        <a href="#" class="list-group-item clock">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h1 class="list-group-item-heading clock-title">Tomato Clock</h1>
+                </div>
+
+                <div id="clock-time-div" class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="clock-time">25:00</div>
+
+
+                </div>
+
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="clock-toggle">START</div>
+
+
+                </div>
+            </div>
+
+        </a>
+
+        <a href="#" class="list-group-item board">
+            <div class="row">
+                <div id="board-content">
+
+                </div>
+            </div>
+
+        </a>
+
+
+        <ul class="list-group" id="item-list">
+
+
+
+        </ul>
+
+    <!--<div class="tab-content">-->
+
+            <!--<div role="tabpanel" class="tab-pane active" id="sw-panel">-->
+                <!--<ul class="list-group" id="sw-list">-->
+
+
+                <!--</ul>-->
+
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="sa-panel">-->
+                <!--2-->
+
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="lw-panel">-->
+                <!--3-->
+
+            <!--</div>-->
+            <!--<div role="tabpanel" class="tab-pane" id="la-panel">-->
+                <!--4-->
+
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
